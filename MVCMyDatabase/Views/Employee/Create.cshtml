@@ -1,0 +1,76 @@
+﻿@model MVCMyDatabase.Models.Employee
+
+@{
+    ViewData["Title"] = "Create";
+}
+<h2>Create</h2>
+<h4>Employees</h4>
+<hr />
+@using (Html.BeginForm("Create", "Employee", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-md-4">
+            <from asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="HireLevelName" class="control-label"></label>
+                    <input asp-for="HireLevelName" class="form-control" placeholder="Hire Level Name" />
+                    <span asp-validation-for="HireLevelName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="HireDate" class="control-label"></label>
+                    <input asp-for="HireDate" class="form-control" placeholder="MM/DD/YYYY" />
+                    <span asp-validation-for="HireDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AddressID" class="control-label"></label>
+                    <input asp-for="AddressID" class="form-control" placeholder="Adress ID" />
+                    <span asp-validation-for="AddressID" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="FirstName" class="control-label"></label>
+                    <input asp-for="FirstName" class="form-control" placeholder="First Name" />
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="MiddleName" class="control-label"></label>
+                    <input asp-for="MiddleName" class="form-control" placeholder="Middle Name" />
+                    <span asp-validation-for="MiddleName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="LastName" class="control-label"></label>
+                    <input asp-for="LastName" class="form-control" placeholder="Last Name" />
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DOB" class="control-label"></label>
+                    <input asp-for="DOB" class="form-control" placeholder="MM/DD/YYYY" />
+                    <span asp-validation-for="DOB" class="text-danger"></span>
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon"><i label asp-for="Gender"></i></span>
+                    <select asp-for="Gender" class="form-control">
+                        <option value="">-- Select Gender --</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                    <span asp-validation-for="Gender" class="text-danger"></span>
+                </div>
+                <div class="input-group">
+                    <label asp-for="SIN" class="control-label"></label>
+                    <input asp-for="SIN" class="form-control" placeholder="SIN" />
+                    <span asp-validation-for="SIN" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </from>
+        </div>
+    </div>
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+    @section Scripts {
+        @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
+}
