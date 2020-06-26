@@ -3,22 +3,23 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using MVCMyDatabase.Models;
 
 namespace MVCMyDatabase.Models
 {
-    public class Employee
+    public class MyDatabase
     {
         //Members
-        public int ID { get; set; }
         [Required]
+        public int ID { get; set; }
+        
         public string HireLevelName { get; set; }
         [Required]
         public DateTime HireDate { get; set; }
-        [Required]
-        public string AddressID { get; set; }
+        public int AddressID { get; set; }
         [Required]
         public string FirstName { get; set; }
-        [Required]
+
         public string MiddleName { get; set; }
         [Required]
         public string LastName { get; set; }
@@ -28,6 +29,5 @@ namespace MVCMyDatabase.Models
         public string Gender { get; set; }
         [Required]
         public string SIN { get; set; }
-        [Required]
     }
 }

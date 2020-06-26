@@ -4,20 +4,21 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
+using MVCMyDatabase.Models;
 
-namespace MVCDemoApp.Models
+namespace MVCMyDatabase.Models
 {
     public class MyDatabaseDataAccessLayer
     {
-        string connectionString = "Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=EmployeeDB;Data Source=DESKTOP-GN5T5KD\\SQLEXPRESS";
+        string connectionString = "Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=MyDatabase;Data Source=DESKTOP-GN5T5KD\\SQLEXPRESS";
         //To View all employees details
-        public IEnumerable<Employee> GetAllEmployees()
+        public IEnumerable<MyDatabase> GetAllEmployees()
         {
-            List<Employee> lstemployee = new List<Employee>();
+            List<MyDatabase> lstemployee = new List<MyDatabase>();
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {
-                SqlCommand cmd = new SqlCommand("spGetAllEmployees", con);
+                SqlCommand cmd = new SqlCommand("GetAllEmployees", con);
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 con.Open();
@@ -25,7 +26,7 @@ namespace MVCDemoApp.Models
 
                 while (rdr.Read())
                 {
-                    Employee employee = new Employee();
+                    MyDatabase employee = new MyDatabase();
 
                     employee.ID = Convert.ToInt32(rdr["EmployeeID"]);
                     employee.HireLevelName = rdr["HireLevelName"].ToString();
@@ -47,11 +48,11 @@ namespace MVCDemoApp.Models
 
 
         //To Add new employee record
-        public void AddEmployee(Employee employee)
+        public void InsertEmployee(MyDatabase employee)
         {
             using (SqlConnection con = new SqlConnection(connectionString))
             {
-                SqlCommand cmd = new SqlCommand("spAddEmployee", con);
+                SqlCommand cmd = new SqlCommand("InsertEmployee", con);
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 cmd.Parameters.AddWithValue("@HireLevelName", employee.HireLevelName);
@@ -71,11 +72,11 @@ namespace MVCDemoApp.Models
         }
 
         //To Update the records of a particular employee
-        public void UpdateEmployee(Employee employee)
+        public void UpdateEmployee(MyDatabase employee)
         {
             using (SqlConnection con = new SqlConnection(connectionString))
             {
-                SqlCommand cmd = new SqlCommand("spUpdateEmployee", con);
+                SqlCommand cmd = new SqlCommand("UpdateEmployee", con);
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 cmd.Parameters.AddWithValue("@HireLevelName", employee.HireLevelName);
@@ -95,13 +96,13 @@ namespace MVCDemoApp.Models
         }
 
         //Get the details of a particular employee
-        public Employee getEmployeeData(int? id)
+        public MyDatabase GetAllEmployees(int? id)
         {
-            Employee employee = new Employee();
+            MyDatabase employee = new MyDatabase();
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {
-                string sqlQuery = "SELECT * FROM tblEmployee WHERE EmployeeID= " + id;
+                string sqlQuery = "SELECT * FROM Employee WHERE EmployeeID= " + id;
                 SqlCommand cmd = new SqlCommand(sqlQuery, con);
 
                 con.Open();
@@ -129,7 +130,7 @@ namespace MVCDemoApp.Models
         {
             using (SqlConnection con = new SqlConnection(connectionString))
             {
-                SqlCommand cmd = new SqlCommand("spDeleteEmployee", con);
+                SqlCommand cmd = new SqlCommand("DeleteEmployee", con);
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 cmd.Parameters.AddWithValue("@EmpId", id);

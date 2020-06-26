@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using MVCDemoApp.Models;
+using MVCMyDatabase.Models;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -11,7 +11,7 @@ namespace MVCMyDatabase.Controllers
 {
     public class MyDatabaseController : Controller
     {
-        MyDatabaseDataAccessLayer objemployee = new MyDatabasDataAccessLayer();
+        MyDatabaseDataAccessLayer objemployee = new MyDatabaseDataAccessLayer();
         // GET: /<controller>/
         //public IActionResult Index()
         //{
@@ -26,11 +26,11 @@ namespace MVCMyDatabase.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind] Employee employee)
+        public IActionResult Create([Bind] MyDatabase employee)
         {
             if (ModelState.IsValid)
             {
-                objemployee.AddEmployee(employee);
+                objemployee.InsertEmployee(employee);
                 return RedirectToAction("Index");
             }
             return View(employee);
@@ -38,7 +38,7 @@ namespace MVCMyDatabase.Controllers
 
         public IActionResult Index()
         {
-            List<Employee> listEmployee = new List<Employee>();
+            List<MyDatabase> listEmployee = new List<MyDatabase>();
             listEmployee = objemployee.GetAllEmployees().ToList();
 
             return View(listEmployee);
@@ -51,7 +51,7 @@ namespace MVCMyDatabase.Controllers
             {
                 return NotFound();
             }
-            Employee employee = objemployee.getEmployeeData(id);
+            MyDatabase employee = objemployee.GetAllEmployees(id);
 
             if (employee == null)
             {
@@ -63,7 +63,7 @@ namespace MVCMyDatabase.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, [Bind]Employee employee)
+        public IActionResult Edit(int id, [Bind]MyDatabase employee)
         {
             if (id != employee.ID)
             {
@@ -84,7 +84,7 @@ namespace MVCMyDatabase.Controllers
             {
                 return NotFound();
             }
-            Employee employee = objemployee.getEmployeeData(id);
+            MyDatabase employee = objemployee.GetAllEmployees(id);
 
             if (employee == null)
             {
@@ -100,7 +100,7 @@ namespace MVCMyDatabase.Controllers
             {
                 return NotFound();
             }
-            Employee employee = objemployee.getEmployeeData(id);
+            MyDatabase employee = objemployee.GetAllEmployees(id);
 
             if (employee == null)
             {
