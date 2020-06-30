@@ -34,8 +34,8 @@ C:\Users\assaa\OneDrive\Documents\MVCMyDatabase\MVCMyDatabase\MVCMyDatabase\obj\
 C:\Users\assaa\OneDrive\Documents\MVCMyDatabase\MVCMyDatabase\MVCMyDatabase\obj\Debug\netcoreapp2.1\MVCMyDatabase.dll
 C:\Users\assaa\OneDrive\Documents\MVCMyDatabase\MVCMyDatabase\MVCMyDatabase\obj\Debug\netcoreapp2.1\MVCMyDatabase.pdb
 C:\Users\assaa\OneDrive\Documents\MVCMyDatabase\MVCMyDatabase\MVCMyDatabase\obj\Debug\netcoreapp2.1\MVCMyDatabase.csproj.CopyComplete
-C:\Users\assaa\OneDrive\Documents\MVCMyDatabase\MVCMyDatabase\MVCMyDatabase\obj\Debug\netcoreapp2.1\Razor\Views\Employee\Create.cshtml.g.cs
-C:\Users\assaa\OneDrive\Documents\MVCMyDatabase\MVCMyDatabase\MVCMyDatabase\obj\Debug\netcoreapp2.1\Razor\Views\Employee\Delete.cshtml.g.cs
-C:\Users\assaa\OneDrive\Documents\MVCMyDatabase\MVCMyDatabase\MVCMyDatabase\obj\Debug\netcoreapp2.1\Razor\Views\Employee\Details.cshtml.g.cs
-C:\Users\assaa\OneDrive\Documents\MVCMyDatabase\MVCMyDatabase\MVCMyDatabase\obj\Debug\netcoreapp2.1\Razor\Views\Employee\Edit.cshtml.g.cs
-C:\Users\assaa\OneDrive\Documents\MVCMyDatabase\MVCMyDatabase\MVCMyDatabase\obj\Debug\netcoreapp2.1\Razor\Views\Employee\Index.cshtml.g.cs
+C:\Users\assaa\OneDrive\Documents\MVCMyDatabase\MVCMyDatabase\MVCMyDatabase\obj\Debug\netcoreapp2.1\Razor\Views\MyDatabase\Create.cshtml.g.cs
+C:\Users\assaa\OneDrive\Documents\MVCMyDatabase\MVCMyDatabase\MVCMyDatabase\obj\Debug\netcoreapp2.1\Razor\Views\MyDatabase\Delete.cshtml.g.cs
+C:\Users\assaa\OneDrive\Documents\MVCMyDatabase\MVCMyDatabase\MVCMyDatabase\obj\Debug\netcoreapp2.1\Razor\Views\MyDatabase\Details.cshtml.g.cs
+C:\Users\assaa\OneDrive\Documents\MVCMyDatabase\MVCMyDatabase\MVCMyDatabase\obj\Debug\netcoreapp2.1\Razor\Views\MyDatabase\Edit.cshtml.g.cs
+C:\Users\assaa\OneDrive\Documents\MVCMyDatabase\MVCMyDatabase\MVCMyDatabase\obj\Debug\netcoreapp2.1\Razor\Views\MyDatabase\Index.cshtml.g.cs

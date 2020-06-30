@@ -4,7 +4,6 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
-using MVCMyDatabase.Models;
 
 namespace MVCMyDatabase.Models
 {
@@ -28,16 +27,25 @@ namespace MVCMyDatabase.Models
                 {
                     MyDatabase employee = new MyDatabase();
 
-                    employee.ID = Convert.ToInt32(rdr["EmployeeID"]);
-                    employee.HireLevelName = rdr["HireLevelName"].ToString();
-                    employee.HireDate = Convert.ToDateTime(rdr["HireDate"]);
-                    employee.AddressID = Convert.ToInt32(rdr["AddressID"]);
-                    employee.FirstName = rdr["FirstName"].ToString();
-                    employee.MiddleName = rdr["MiddleName"].ToString();
-                    employee.LastName = rdr["LastName"].ToString();
-                    employee.DOB = Convert.ToDateTime(rdr["DOB"]);
-                    employee.Gender = rdr["Gender"].ToString();
-                    employee.SIN = rdr["SIN"].ToString();
+                    //try
+                    //{
+
+                        employee.ID = Convert.ToInt32(rdr["EmployeeID"]);
+                        //employee.HireLevelName = rdr["HireLevelName"].ToString();
+                        employee.HireDate = Convert.ToDateTime(rdr["HireDate"]);
+                        employee.AddressID = Convert.ToInt32(rdr["AddressID"]);
+                        employee.FirstName = rdr["FirstName"].ToString();
+                        employee.MiddleName = rdr["MiddleName"].ToString();
+                        employee.LastName = rdr["LastName"].ToString();
+                        employee.DOB = Convert.ToDateTime(rdr["DOB"]);
+                        employee.Gender = rdr["Gender"].ToString();
+                        employee.SIN = rdr["SIN"].ToString();   
+                    /*}
+                    catch
+                    {
+                        Console.WriteLine("No Information Found.");
+                    }*/
+                    
 
                     lstemployee.Add(employee);
                 }
@@ -56,14 +64,14 @@ namespace MVCMyDatabase.Models
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 cmd.Parameters.AddWithValue("@HireLevelName", employee.HireLevelName);
-                cmd.Parameters.AddWithValue("HireDate", employee.HireDate);
-                cmd.Parameters.AddWithValue("AddressID", employee.AddressID);
-                cmd.Parameters.AddWithValue("FirstName", employee.FirstName);
-                cmd.Parameters.AddWithValue("MiddleName", employee.MiddleName);
-                cmd.Parameters.AddWithValue("LastName", employee.LastName);
-                cmd.Parameters.AddWithValue("DOB", employee.DOB);
-                cmd.Parameters.AddWithValue("Gender", employee.Gender);
-                cmd.Parameters.AddWithValue("SIN", employee.SIN);
+                cmd.Parameters.AddWithValue("@HireDate", employee.HireDate);
+                cmd.Parameters.AddWithValue("@AddressID", employee.AddressID);
+                cmd.Parameters.AddWithValue("@FirstName", employee.FirstName);
+                cmd.Parameters.AddWithValue("@MiddleName", employee.MiddleName);
+                cmd.Parameters.AddWithValue("@LastName", employee.LastName);
+                cmd.Parameters.AddWithValue("@DOB", employee.DOB);
+                cmd.Parameters.AddWithValue("@Gender", employee.Gender);
+                cmd.Parameters.AddWithValue("@SIN", employee.SIN);
 
                 con.Open();
                 cmd.ExecuteNonQuery();
@@ -79,15 +87,23 @@ namespace MVCMyDatabase.Models
                 SqlCommand cmd = new SqlCommand("UpdateEmployee", con);
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.AddWithValue("@HireLevelName", employee.HireLevelName);
-                cmd.Parameters.AddWithValue("HireDate", employee.HireDate);
-                cmd.Parameters.AddWithValue("AddressID", employee.AddressID);
-                cmd.Parameters.AddWithValue("FirstName", employee.FirstName);
-                cmd.Parameters.AddWithValue("MiddleName", employee.MiddleName);
-                cmd.Parameters.AddWithValue("LastName", employee.LastName);
-                cmd.Parameters.AddWithValue("DOB", employee.DOB);
-                cmd.Parameters.AddWithValue("Gender", employee.Gender);
-                cmd.Parameters.AddWithValue("SIN", employee.SIN);
+                try
+                {
+                    cmd.Parameters.AddWithValue("@HireLevelName", employee.HireLevelName);
+                    cmd.Parameters.AddWithValue("@HireDate", employee.HireDate);
+                    cmd.Parameters.AddWithValue("@AddressID", employee.AddressID);
+                    cmd.Parameters.AddWithValue("@FirstName", employee.FirstName);
+                    cmd.Parameters.AddWithValue("@MiddleName", employee.MiddleName);
+                    cmd.Parameters.AddWithValue("@LastName", employee.LastName);
+                    cmd.Parameters.AddWithValue("@DOB", employee.DOB);
+                    cmd.Parameters.AddWithValue("@Gender", employee.Gender);
+                    cmd.Parameters.AddWithValue("@SIN", employee.SIN);
+
+                }
+                catch
+                {
+                    Console.WriteLine("No Information Found.");
+                }
 
                 con.Open();
                 cmd.ExecuteNonQuery();
@@ -110,16 +126,24 @@ namespace MVCMyDatabase.Models
 
                 while (rdr.Read())
                 {
-                    employee.ID = Convert.ToInt32(rdr["EmployeeID"]);
-                    employee.HireLevelName = rdr["HireLevelName"].ToString();
-                    employee.HireDate = Convert.ToDateTime(rdr["HireDate"]);
-                    employee.AddressID = Convert.ToInt32(rdr["AddressID"]);
-                    employee.FirstName = rdr["FirstName"].ToString();
-                    employee.MiddleName = rdr["MiddleName"].ToString();
-                    employee.LastName = rdr["LastName"].ToString();
-                    employee.DOB = Convert.ToDateTime(rdr["DOB"]);
-                    employee.Gender = rdr["Gender"].ToString();
-                    employee.SIN = rdr["SIN"].ToString();
+                    try
+                    {
+                        employee.ID = Convert.ToInt32(rdr["EmployeeID"]);
+                        employee.HireLevelName = rdr["HireLevelName"].ToString();
+                        employee.HireDate = Convert.ToDateTime(rdr["HireDate"]);
+                        employee.AddressID = Convert.ToInt32(rdr["AddressID"]);
+                        employee.FirstName = rdr["FirstName"].ToString();
+                        employee.MiddleName = rdr["MiddleName"].ToString();
+                        employee.LastName = rdr["LastName"].ToString();
+                        employee.DOB = Convert.ToDateTime(rdr["DOB"]);
+                        employee.Gender = rdr["Gender"].ToString();
+                        employee.SIN = rdr["SIN"].ToString();
+                    }
+                    catch
+                    {
+                        Console.WriteLine("No Information Found.");
+                    }
+                    
                 }
             }
             return employee;
@@ -134,6 +158,7 @@ namespace MVCMyDatabase.Models
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 cmd.Parameters.AddWithValue("@EmpId", id);
+                cmd.Parameters.AddWithValue("PerId", 1);
 
                 con.Open();
                 cmd.ExecuteNonQuery();
