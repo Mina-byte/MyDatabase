@@ -51,7 +51,7 @@ namespace MVCMyDatabase.Controllers
             {
                 return NotFound();
             }
-            MyDatabase employee = objemployee.GetAllEmployees(id);
+            MyDatabase employee = objemployee.getEmployeeData(id);
 
             if (employee == null)
             {
@@ -84,7 +84,7 @@ namespace MVCMyDatabase.Controllers
             {
                 return NotFound();
             }
-            MyDatabase employee = objemployee.GetAllEmployees(id);
+            MyDatabase employee = objemployee.getEmployeeData(id);
 
             if (employee == null)
             {
@@ -100,7 +100,7 @@ namespace MVCMyDatabase.Controllers
             {
                 return NotFound();
             }
-            MyDatabase employee = objemployee.GetAllEmployees(id);
+            MyDatabase employee = objemployee.getEmployeeData(id);
 
             if (employee == null)
             {

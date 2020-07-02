@@ -31,7 +31,7 @@ namespace MVCMyDatabase.Models
                     //{
 
                         employee.ID = Convert.ToInt32(rdr["EmployeeID"]);
-                        //employee.HireLevelName = rdr["HireLevelName"].ToString();
+                        employee.HireLevelName = rdr["HireLevelName"].ToString();
                         employee.HireDate = Convert.ToDateTime(rdr["HireDate"]);
                         employee.AddressID = Convert.ToInt32(rdr["AddressID"]);
                         employee.FirstName = rdr["FirstName"].ToString();
@@ -89,6 +89,7 @@ namespace MVCMyDatabase.Models
 
                 try
                 {
+                    cmd.Parameters.AddWithValue("@EmpId", employee.ID);
                     cmd.Parameters.AddWithValue("@HireLevelName", employee.HireLevelName);
                     cmd.Parameters.AddWithValue("@HireDate", employee.HireDate);
                     cmd.Parameters.AddWithValue("@AddressID", employee.AddressID);
@@ -112,14 +113,14 @@ namespace MVCMyDatabase.Models
         }
 
         //Get the details of a particular employee
-        public MyDatabase GetAllEmployees(int? id)
+        public MyDatabase getEmployeeData(int? id)
         {
             MyDatabase employee = new MyDatabase();
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {
-                string sqlQuery = "SELECT * FROM Employee WHERE EmployeeID= " + id;
-                SqlCommand cmd = new SqlCommand(sqlQuery, con);
+                //string sqlQuery = "SELECT  FROM Employee WHERE EmployeeID= " + id;
+                SqlCommand cmd = new SqlCommand("GetAllEmployees", con);
 
                 con.Open();
                 SqlDataReader rdr = cmd.ExecuteReader();
@@ -158,7 +159,6 @@ namespace MVCMyDatabase.Models
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 cmd.Parameters.AddWithValue("@EmpId", id);
-                cmd.Parameters.AddWithValue("PerId", 1);
 
                 con.Open();
                 cmd.ExecuteNonQuery();
